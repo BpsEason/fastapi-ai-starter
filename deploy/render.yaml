@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: fastapi-ai-starter
+    env: docker
+    repo: REPLACE_WITH_YOUR_REPO # 記得替換成您的 GitHub/GitLab 倉庫地址
+    branch: main
+    dockerfilePath: Dockerfile
+    # 設定環境變數
+    envVars:
+      - key: APP_API_KEY
+        generateValue: true # Render 可自動生成一個安全的密鑰
+      - key: USE_REAL_MODEL
+        value: "0" # 預設使用 Mock Model
+    autoDeploy: true
+    plan: free # 依需求調整

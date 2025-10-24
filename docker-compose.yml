@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_API_KEY=changeme
+      # - USE_REAL_MODEL=1
+      # - REDIS_URL=redis://redis:6379/0 # 如果使用 Redis，取消註釋
+    # depends_on: # 如果使用 Redis，取消註釋
+    #   - redis
+  # redis: # 如果需要 Redis 服務，取消註釋
+  #   image: "redis:7-alpine"
+  #   ports:
+  #     - "6379:6379"
+  #   command: redis-server --appendonly yes
+  #   volumes:
+  #     - redis-data:/data
+# volumes: # 如果需要 Redis 服務，取消註釋
+#   redis-data:
