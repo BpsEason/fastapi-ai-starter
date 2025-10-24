@@ -1,0 +1,17 @@
+name: Generate API Key
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate random API key
+        id: gen
+        run: |
+          # 修正: 使用 $GITHUB_OUTPUT 寫入輸出變數 (v4+ 推薦)
+          key=$(python -c 'import secrets; print(secrets.token_hex(32))')
+          echo "API_KEY=$key" >> $GITHUB_OUTPUT
+      - name: Show new API key
+        run: echo "New API key: ${{ steps.gen.outputs.API_KEY }}"
